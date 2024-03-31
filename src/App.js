@@ -2,10 +2,10 @@ import shoppingCart from './shoppingcart.jpg';
 import './App.css';
 
 const shoppingCartList = [
-  {name: 'Fallout4', releaseYear: '2015', price: '$20.00', purchasable: true},
-  {name: 'Minecraft', releaseYear: '2011', price: '$20.00', purchasable: true},
-  {name: 'League of Legends', releaseYear: '2009', price: '$00.00', purchasable: false},
-  {name: 'Factorio', releaseYear: '2016', price: '$35.00', purchasable: true}
+  {name: 'Fallout4', releaseYear: '2015', price: 20.00, purchasable: true},
+  {name: 'Minecraft', releaseYear: '2011', price: 20.00, purchasable: true},
+  {name: 'League of Legends', releaseYear: '2009', price: 0.00, purchasable: false},
+  {name: 'Factorio', releaseYear: '2016', price: 35.00, purchasable: true}
 ];
 
 /**
@@ -36,17 +36,20 @@ function ShoppingCartImage(){
  *  and returns a list of those games formatted
  */
 function VideoGameDisplay(){
+  let totalPrice = 0.0;
+  shoppingCartList.forEach((videoGame) => totalPrice += videoGame.price);
   const listVideoGames = shoppingCartList.map(videoGame =>
     <li
       key={videoGame.name}
       >
-        {videoGame.name + ' ' + videoGame.price + (videoGame.purchasable ? "" : " unavailable! ")}
+        {videoGame.name + ' ' + '$'+videoGame.price + (videoGame.purchasable ? "" : " unavailable! ")}
     </li>
   );
   return(
     <>
       <h3>Your shopping cart: </h3>
       <ul>{listVideoGames}</ul>
+      <h4>Your total: ${totalPrice}</h4>
     </>
   );
 }
