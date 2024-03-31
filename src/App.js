@@ -42,7 +42,7 @@ function VideoGameDisplay(){
     <li
       key={videoGame.name}
       >
-        {videoGame.name + ' ' + '$'+videoGame.price + (videoGame.purchasable ? "" : " unavailable! ")}
+        {videoGame.name + ' $'+videoGame.price + (videoGame.purchasable ? "" : " unavailable! ")}
     </li>
   );
   return(
